@@ -30,7 +30,7 @@ export const categories = [
   }, {
     label: 'Countryside',
     icon: TbMountain,
-    description: 'This property is om the countryside!',
+    description: 'This property is on the countryside!',
   }, {
     label: 'Pool',
     icon: TbPool,
