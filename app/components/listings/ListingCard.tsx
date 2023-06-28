@@ -3,11 +3,10 @@
 import { useCallback, useMemo } from 'react';
 import { format } from 'date-fns';
 
-import {Listing, Reservation} from '@prisma/client';
+import {Listing, Reservation, User} from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-import { SafeUser } from '@/app/types';
 import useCountries from '@/app/hooks/useCountries';
 
 import HeartButton from './../HeartButton';
@@ -21,7 +20,7 @@ interface ListingCardProps {
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
 }
 
 const ListingCard: React.FC<ListingCardProps> = ({
