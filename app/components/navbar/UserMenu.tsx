@@ -8,6 +8,7 @@ interface UserMenuProps {
 
 import { useState, useCallback } from 'react';
 import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 import { AiOutlineMenu } from 'react-icons/ai';
 
@@ -21,6 +22,7 @@ import MenuItem from './MenuItem';
 const UserMenu: React.FC<UserMenuProps> = ({
   currentUser,
 }) => {
+  const router = useRouter();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
@@ -63,7 +65,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             {currentUser ? (
               <>
                 <MenuItem
-                  onClick={() => false}
+                  onClick={() => router.push('/trips')}
                   label="My trips"
                 />
                 <MenuItem

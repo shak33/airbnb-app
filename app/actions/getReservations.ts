@@ -7,31 +7,35 @@ interface IParams {
 }
 
 export default async function getReservations(params: IParams) {
-  const { listingId, userId, authorId } = params;
+  try {
+    const { listingId, userId, authorId } = params;
 
-  const query: any = {};
+    const query: any = {};
 
-  if (listingId) {
-    query.listingId = listingId;
+    if (listingId) {
+      query.listingId = listingId;
+    }
+
+    if (userId) {
+      query.userId = userId;
+    }
+
+    if (authorId) {
+      query.listing = { userId: authorId };
+    }
+
+    const resevation = await prisma.reservation.findMany({
+      where: query,
+      include: {
+        listing: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return resevation;
+  } catch (error: any) {
+    throw new Error(error);
   }
-
-  if (userId) {
-    query.userId = userId;
-  }
-
-  if (authorId) {
-    query.listing = { userId: authorId };
-  }
-
-  const resevation = await prisma.reservation.findMany({
-    where: query,
-    include: {
-      listing: true,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
-
-  return resevation;
 };
