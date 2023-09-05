@@ -3,7 +3,7 @@
 import { useCallback, useMemo } from 'react';
 import { format } from 'date-fns';
 
-import {Listing, Reservation, User} from '@prisma/client';
+import { Listing, Reservation, User } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 

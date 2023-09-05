@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useCallback } from 'react';
-import { Reservation, User } from '@prisma/client';
+import { User } from '@prisma/client';
+import { ReservationWithListing } from '@/app/types/ReservationWithListing';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
 interface TripsClientProps {
-  reservations: Reservation[];
+  reservations: ReservationWithListing[];
   currentUser?: User | null;
 }
 

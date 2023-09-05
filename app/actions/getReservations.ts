@@ -24,7 +24,7 @@ export default async function getReservations(params: IParams) {
       query.listing = { userId: authorId };
     }
 
-    const resevation = await prisma.reservation.findMany({
+    const reservations = await prisma.reservation.findMany({
       where: query,
       include: {
         listing: true,
@@ -34,7 +34,7 @@ export default async function getReservations(params: IParams) {
       },
     });
 
-    return resevation;
+    return reservations;
   } catch (error: any) {
     throw new Error(error);
   }
